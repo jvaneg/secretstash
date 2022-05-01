@@ -1,0 +1,14 @@
+secretstash is a program that stashes secrets for you in my directory where no one (except me!) can see them.
+Just in case someone does manage to get into my account though,
+the secrets are also encrypted with a xor stream cipher (variant of the vigenere cipher),
+using a personalized key for every user.
+
+secretstash has two modes, stash and pop:
+
+Stash reads a secret from stdin, encrypts it, and stashes it in a folder given by the user's uid, as a file named after the passed in secret name.
+Ex: echo -n "joel is cool" | ./secretstash "coolsecret"
+
+Pop retrieves a secret from your uid folder, decrypts it, and prints it to stdout.
+Ex: ./secretstash -p "coolsecret"
+
+Your goal is to retrieve, decrypt, and read someone else's secret.
